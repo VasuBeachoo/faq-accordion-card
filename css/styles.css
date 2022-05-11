@@ -14,7 +14,7 @@ body {
   color: hsl(238, 29%, 16%);
 }
 
-.red-text {
+.soft-red-text {
   color: hsl(14, 88%, 65%);
 }
 
@@ -30,7 +30,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
   background: linear-gradient(
     180deg,
@@ -47,7 +47,7 @@ body {
   width: 800px;
   border-radius: 18px;
   padding: 30px 35px 65px;
-  margin: 30px;
+  margin: 60px;
 }
 
 .img-section {
@@ -86,6 +86,10 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.container-hover {
+  cursor: pointer;
 }
 
 .faq-question {

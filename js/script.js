@@ -40,7 +40,7 @@ function removeAnswers() {
   }
 }
 
-let faqAnswer;
+let faqAnswer, faqQuestion;
 faqQuestionContainers.forEach((container) => {
   container.addEventListener("click", (e) => {
     let containerId = e.target.id;
@@ -66,5 +66,44 @@ faqQuestionContainers.forEach((container) => {
       );
       if (faqAnswer) faqItem.append(faqAnswer);
     }
+    faqQuestion = document.querySelector(
+      "#question-text-" + containerId.charAt(containerId.length - 1)
+    );
+    if (faqQuestion)
+      if (
+        faqQuestion.className !== "faq-question bold-text very-dark-blue-text"
+      ) {
+        faqQuestion.className = "faq-question bold-text very-dark-blue-text";
+      } else {
+        faqQuestion.className = "faq-question regular-text soft-red-text";
+      }
+  });
+
+  container.addEventListener("mouseover", (e) => {
+    let containerId = e.target.id;
+    e.target.className = "faq-question-container container-hover";
+    faqQuestion = document.querySelector(
+      "#question-text-" + containerId.charAt(containerId.length - 1)
+    );
+    if (faqQuestion)
+      if (
+        faqQuestion.className !== "faq-question bold-text very-dark-blue-text"
+      ) {
+        faqQuestion.className = "faq-question regular-text soft-red-text";
+      }
+  });
+
+  container.addEventListener("mouseleave", (e) => {
+    let containerId = e.target.id;
+    e.target.className = "faq-question-container container-hover";
+    faqQuestion = document.querySelector(
+      "#question-text-" + containerId.charAt(containerId.length - 1)
+    );
+    if (faqQuestion)
+      if (
+        faqQuestion.className !== "faq-question bold-text very-dark-blue-text"
+      ) {
+        faqQuestion.className = "faq-question regular-text very-dark-blue-text";
+      }
   });
 });
