@@ -40,7 +40,7 @@ function removeAnswers() {
   }
 }
 
-let faqAnswer, faqQuestion;
+let faqItem, faqQuestion, faqArrow, faqAnswer;
 faqQuestionContainers.forEach((container) => {
   container.addEventListener("click", (e) => {
     let containerId = e.target.id;
@@ -61,7 +61,7 @@ faqQuestionContainers.forEach((container) => {
       } else if (containerId === "question-4") {
         faqAnswer = faqAnswers[4];
       }
-      let faqItem = document.querySelector(
+      faqItem = document.querySelector(
         "#item-" + containerId.charAt(containerId.length - 1)
       );
       if (faqAnswer) faqItem.append(faqAnswer);
@@ -76,6 +76,16 @@ faqQuestionContainers.forEach((container) => {
         faqQuestion.className = "faq-question bold-text very-dark-blue-text";
       } else {
         faqQuestion.className = "faq-question regular-text soft-red-text";
+      }
+
+    faqArrow = document.querySelector(
+      "#arrow-" + containerId.charAt(containerId.length - 1)
+    );
+    if (faqArrow)
+      if (faqArrow.className === "arrow down-arrow") {
+        faqArrow.className = "arrow up-arrow";
+      } else {
+        faqArrow.className = "arrow down-arrow";
       }
   });
 
