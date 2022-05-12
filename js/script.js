@@ -1,3 +1,5 @@
+const imgSection = document.querySelector(".img-section");
+
 let faqAnswers = []; // Initialize array with FAQ answers
 for (let i = 0; i < 5; i++) {
   faqAnswers[i] = document.createElement("p");
@@ -117,3 +119,58 @@ faqQuestionContainers.forEach((container) => {
       }
   });
 });
+
+function removeImages() {
+  const imgPattern = document.querySelector(".img-pattern");
+  imgPattern && imgPattern.remove();
+
+  const imgBox = document.querySelector(".img-box");
+  imgBox && imgBox.remove();
+
+  const imgWoman = document.querySelector(".img-woman");
+  imgWoman && imgWoman.remove();
+}
+
+function displayMobile() {
+  removeImages();
+
+  const imgPattern = document.createElement("img");
+  imgPattern.src = "./images/bg-pattern-mobile.svg";
+  imgPattern.className = "img-pattern img-pattern-mobile";
+
+  const imgWoman = document.createElement("img");
+  imgWoman.src = "./images/illustration-woman-online-mobile.svg";
+  imgWoman.className = "img-woman img-woman-mobile";
+
+  imgSection.append(imgPattern, imgWoman);
+}
+
+function displayDesktop() {
+  removeImages();
+
+  const imgPattern = document.createElement("img");
+  imgPattern.src = "./images/bg-pattern-desktop.svg";
+  imgPattern.className = "img-pattern img-pattern-desktop";
+
+  const imgWoman = document.createElement("img");
+  imgWoman.src = "./images/illustration-woman-online-desktop.svg";
+  imgWoman.className = "img-woman img-woman-desktop";
+
+  const imgBox = document.createElement("img");
+  imgBox.src = "./images/illustration-box-desktop.svg";
+  imgBox.className = "img-box img-box-desktop";
+
+  imgSection.append(imgPattern, imgWoman, imgBox);
+}
+
+function resizeWindow() {
+  if (window.innerWidth < 1000) {
+    displayMobile();
+  } else {
+    displayDesktop();
+  }
+}
+
+window.addEventListener("resize", resizeWindow);
+
+resizeWindow();
